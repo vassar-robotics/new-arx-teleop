@@ -35,6 +35,9 @@ R5Controller::R5Controller(ros::NodeHandle nh) {
   else
     interfaces_ptr_->setCatchActionSlow();
 
+  end_effector_mass_subscriber_ = nh.subscribe<std_msgs::Float64>(
+      "end_effector_extra_mass", 10, &R5Controller::endEffectorMassCB, this);
+
   if (arm_control_type == "normal_v1") {
     ROS_INFO("常规模式启动[v1]");
     // sub
@@ -111,6 +114,10 @@ R5Controller::R5Controller(ros::NodeHandle nh) {
   }
 
   timer_ = nh.createTimer(ros::Duration(0.01), &R5Controller::PubState, this);
+}
+
+void R5Controller::endEffectorMassCB(const std_msgs::Float64::ConstPtr &msg) {
+  interfaces_ptr_->setEndEffectorMass(msg->data);
 }
 
 void R5Controller::CmdCallbackV2(const arx5_arm_msg::RobotCmd::ConstPtr &msg) {
@@ -267,13 +274,13 @@ void R5Controller::pubArmStatusV2(std::vector<double> joint_pos_vector,
   msg.end_pos = result;
 
   for (int i = 0; i < 7; i++) {
-    msg.joint_pos[i] = joint_pos_vector[i];
+    msg.joint_pos.push_back(joint_pos_vector[i]);
   }
   for (int i = 0; i < 7; i++) {
-    msg.joint_vel[i] = joint_velocities_vector[i];
+    msg.joint_vel.push_back(joint_velocities_vector[i]);
   }
   for (int i = 0; i < 7; i++) {
-    msg.joint_cur[i] = joint_current_vector[i];
+    msg.joint_cur.push_back(joint_current_vector[i]);
   }
 
   if (arm_end_type_ == 1) {

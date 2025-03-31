@@ -41,6 +41,8 @@ namespace arx::r5
         void setCatchActionFast();
         void setCatchActionSlow();
 
+        void setEndEffectorMass(double mass);
+
         /// @brief 状态枚举
         enum state
         {
