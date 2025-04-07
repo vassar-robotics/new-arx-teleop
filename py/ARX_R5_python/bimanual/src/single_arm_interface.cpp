@@ -14,5 +14,6 @@ PYBIND11_MODULE(arx_r5_python, m) {
         .def("get_joint_positions", &arx::r5::InterfacesPy::get_joint_positions)
         .def("get_joint_velocities", &arx::r5::InterfacesPy::get_joint_velocities)
         .def("get_joint_currents", &arx::r5::InterfacesPy::get_joint_currents)
+        .def("arx_x", &arx::r5::InterfacesPy::arx_x)
         .def("get_ee_pose", &arx::r5::InterfacesPy::get_ee_pose);
 }

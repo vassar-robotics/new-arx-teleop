@@ -24,6 +24,7 @@ R5Controller::R5Controller() : Node("r5_controller_node") {
     interfaces_ptr_->setCatchActionFast();
   else
     interfaces_ptr_->setCatchActionSlow();
+  interfaces_ptr_->arx_x(500,2000,10);
   auto pub_name = this->declare_parameter("arm_pub_topic_name", "arm_status");
 
   if (arm_control_type == "normal") {
