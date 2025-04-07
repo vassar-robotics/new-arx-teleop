@@ -40,6 +40,7 @@ namespace arx::r5
 
         void setCatchActionFast();
         void setCatchActionSlow();
+        void arx_x(double arx1, double arx2, double arx3);
 
         void setEndEffectorMass(double mass);
 

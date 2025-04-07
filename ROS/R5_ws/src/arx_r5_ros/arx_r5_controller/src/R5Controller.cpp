@@ -34,7 +34,7 @@ R5Controller::R5Controller(ros::NodeHandle nh) {
     interfaces_ptr_->setCatchActionFast();
   else
     interfaces_ptr_->setCatchActionSlow();
-  interfaces_ptr_->arx_x(0.5,2,0);
+  interfaces_ptr_->arx_x(0.5,2,0.1);
 
   end_effector_mass_subscriber_ = nh.subscribe<std_msgs::Float64>(
       "end_effector_extra_mass", 10, &R5Controller::endEffectorMassCB, this);

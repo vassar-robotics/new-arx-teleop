@@ -23,7 +23,7 @@ else:
     raise FileNotFoundError(f"Shared library not found: {so_file}")
 
 # 使用 os.path.join 来拼接路径
-so_file = find_first_specific_so_file(os.path.join(current_dir, 'api', 'arx_r5_python'),'arx_r5_python_tools.')
+so_file = find_first_specific_so_file(os.path.join(current_dir, 'api'),'kinematic_solver.')
 
 # 确保共享库的路径在 Python 的路径中
 if os.path.exists(so_file):
@@ -35,6 +35,7 @@ else:
 try:
     from .script.dual_arm import *  # 确保这两个类在各自的文件中被正确定义
     from .script.single_arm import *
+    from .script.solver import *
 except ImportError as e:
     raise ImportError(f"Failed to import Python modules: {e}")
 
