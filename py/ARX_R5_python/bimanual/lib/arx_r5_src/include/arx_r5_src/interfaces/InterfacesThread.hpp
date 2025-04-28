@@ -43,6 +43,7 @@ namespace arx::r5
         void arx_x(double arx1, double arx2, double arx3);
 
         void setEndEffectorMass(double mass);
+        std::vector<int> getErrorCode();
 
         /// @brief 状态枚举
         enum state

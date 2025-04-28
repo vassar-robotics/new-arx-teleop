@@ -15,6 +15,8 @@ typedef struct HybridJointStatus {
   double velocity = 0;
   double torque = 0;
   double current = 0;
+  HybridJointStatus()
+      : position(0.0), velocity(0.0), torque(0.0), current(0.0) {}
 } HybridJointStatus;
 } // namespace hw_interface
 } // namespace arx
