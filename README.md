@@ -102,6 +102,13 @@ You should hopefully see a stream of text resembling `CAN 接口 can1 正常工�
 
 ## 3. Running the arm
 
+Make sure you are in the `py/ARX_R5_python` directory.
+
+Then, install all pip packages from requirements.txt:
+```bash
+pip install -r requirements.txt
+```
+
 In every new terminal, make sure you run:
 ```bash
 source ./setup.sh
@@ -112,3 +119,10 @@ Here's a simple, single-arm test:
 python3 test_keyboard.py
 ```
 You can press the arrow keys and observe the magic of inverse kinematics!
+
+## 4. Using Remote TeleOp
+
+Run the following command to run the follower arm from a 6-joint SO-101 leader arm:
+```bash
+python3 test_follower.py
+```
